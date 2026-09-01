@@ -1043,9 +1043,13 @@ function render(){
 function initMap(){
   if(map) return;
   map=L.map("map",{center:[45.993,-123.910],zoom:10});
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{
-    attribution:'© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a>',
-    subdomains:"abcd",maxZoom:19
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",{
+    attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, © Esri',
+    maxZoom:16
+  }).addTo(map);
+
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",{
+    maxZoom:16
   }).addTo(map);
 
   PLACES.forEach((p,i)=>{
